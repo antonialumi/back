@@ -5,6 +5,10 @@ const product1 ={
     thumbnail : "Mouse Inalámbrico - Bluetooth & USB",
     code : 101,
     stock : 7,
+
+    noticeStock() {
+        console.log(`Apurate a comprar ${this.title} tan solo quedan ${this.stock} en stock!! `)
+    }
 }
 class ProductManager{
     constructor(title, description, price, thumbnail, code, stock){
@@ -15,10 +19,10 @@ class ProductManager{
         this.code = code
         this.stock = stock
     }
+    
 }
 const product2 = new ProductManager("Auriculares" , "Auriculares inalámbricos bluetooth con 12 hrs de autonomía", 8000, "Auriculares Inalámbricos - Bluetooth Fast charge", 102, 15)
 console.log(product2);
-
 //addProduct();
 
 //getProduct();
