@@ -1,4 +1,4 @@
-class ProductManager{
+class Product{
     constructor(title, description, price, thumbnail, code, stock){
         this.title = title
         this.description = description
@@ -7,38 +7,54 @@ class ProductManager{
         this.code = code
         this.stock = stock
     }
+}
+
+class ProductManager{
+    constructor(products = []){
+        this.products = products
+    }
     
-    addProduct(){
-        console.log(`Se agregó ${this.title} al carrito`)
+    addProduct(product){
+        this.products.push(product)
+        console.log("Se ha ingresado el siguiente producto",product)
+        return this
     }
 
     getProducts(){
-        console.log(`${ProductManager}`)
+        return this.products
     }
 
-    getProductById(){
-        console.log(`El código es ${this.code} `)
+    getProductById(code){
+        return this.products.find( product => code === product.code)
     }
-
-    noticeStock(){
-        console.log(`Apurate a comprar ${this.title} tan solo quedan ${this.stock} en stock!! `)
-    }
-
     
 }
-const product1 = new ProductManager("Mouse", "Mouse Inalámbrico Óptico Led Recargable Silencioso Bluetooth Portátil Usb", 5000, "Mouse Inalámbrico - Bluetooth & USB", 101, 7)
-const product2 = new ProductManager("Auriculares" , "Auriculares inalámbricos bluetooth con 12 hrs de autonomía", 8000, "Auriculares Inalámbricos - Bluetooth Fast charge", 102, 15);
+const carrito = new ProductManager();
 
-console.log(product2);
-console.log(product1);
 
-product1.getProductById();
-product2.getProductById();
+const mouseInalambrico = new Product(
+    "Mouse", 
+    "Mouse Inalámbrico Óptico Led Recargable Silencioso Bluetooth Portátil Usb", 
+    5000, 
+    "Mouse Inalámbrico - Bluetooth & USB", 
+    101, 
+    7)
 
-product1.addProduct();
-product2.addProduct();
+const auricularesInalambricos = new Product(
+    "Auriculares" ,
+    "Auriculares inalámbricos bluetooth con 12 hrs de autonomía", 
+    8000, "Auriculares Inalámbricos - Bluetooth Fast charge", 102, 15);
 
-product1.noticeStock();
-product2.noticeStock();
+console.log({
+carrito:carrito
+    .addProduct(mouseInalambrico)
+    .addProduct(auricularesInalambricos)
+    .getProducts()
+})
 
-getProducts();
+const auris = carrito.getProductById(102);
+
+console.log({auris})
+
+
+// pruebas
