@@ -25,9 +25,12 @@ class ProductManager{
     }
 
     getProductById(code){
+        if (code != this.code){
+            console.log("Not found")
+        }else{
         return this.products.find( product => code === product.code)
     }
-    
+}
 }
 const carrito = new ProductManager();
 
@@ -52,7 +55,7 @@ carrito:carrito
     .getProducts()
 })
 
-const auris = carrito.getProductById(102);
+const auris = carrito.getProductById(105);
 
 console.log({auris})
 
